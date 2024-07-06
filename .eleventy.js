@@ -1,20 +1,19 @@
-const markdownIt = require('markdown-it')
-const markdownItAnchor = require('markdown-it-anchor')
+import markdownIt from 'markdown-it'
+import markdownItAnchor from 'markdown-it-anchor'
 
-const EleventyPluginNavigation = require('@11ty/eleventy-navigation')
-const EleventyPluginRss = require('@11ty/eleventy-plugin-rss')
-const EleventyPluginSyntaxhighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
-const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
+import EleventyPluginNavigation from '@11ty/eleventy-navigation';
+import EleventyPluginRss from '@11ty/eleventy-plugin-rss'
+import EleventyPluginSyntaxhighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import EleventyVitePlugin from '@11ty/eleventy-plugin-vite'
 
-const rollupPluginCritical = require('rollup-plugin-critical').default
+import rollupPluginCritical from 'rollup-plugin-critical'
 
-const filters = require('./utils/filters.js')
-const transforms = require('./utils/transforms.js')
-const shortcodes = require('./utils/shortcodes.js')
 
-const { resolve } = require('path')
+import filters from './utils/filters.js'
+import transforms from './utils/transforms.js'
+import shortcodes from './utils/shortcodes.js'
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
 	eleventyConfig.setServerPassthroughCopyBehavior('copy');
 	eleventyConfig.addPassthroughCopy("public");
 
