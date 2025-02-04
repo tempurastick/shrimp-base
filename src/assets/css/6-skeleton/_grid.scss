@@ -6,7 +6,7 @@
 		display: grid;
 		grid-auto-columns: 1fr;
 		grid-auto-rows: 1fr;
-		grid-template-columns: 10% auto;
+		grid-template-columns: 470px auto;
 		grid-template-rows: auto auto 1fr;
 		gap: 0px 0px;
 		grid-template-areas:
@@ -23,7 +23,8 @@
 }
 
 .main {
-	min-height: 80vh;
+	margin-left: var(--spacing-medium);
+	min-height: 87vh;
 
 	@include breakpoint($breakpoint-md) {
 		grid-area: content;
@@ -31,6 +32,7 @@
 }
 
 .site-footer {
+	margin-left: var(--spacing-medium);
 	@include breakpoint($breakpoint-md) {
 		grid-area: footer;
 	}

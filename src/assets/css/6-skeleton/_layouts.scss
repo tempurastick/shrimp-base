@@ -1,5 +1,13 @@
+@use '../3-tools/mixins' as *;
+
 // Main Site Layout
 
 body {
 	overflow-x: hidden;
+}
+
+.wrapper__md {
+	@include breakpoint($breakpoint-md) {
+		max-width: 1024px;
+	}
 }

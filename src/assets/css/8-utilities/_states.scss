@@ -1,7 +1,16 @@
+@use '../3-tools/mixins' as *;
+
 .show {
 	visibility: visible;
 }
 
 .hide {
 	visibility: hidden;
+}
+
+.hide--mobile {
+	visibility: hidden;
+	@include breakpoint($breakpoint-md) {
+		visibility: inherit;
+	}
 }

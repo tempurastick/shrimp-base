@@ -4,6 +4,8 @@
 	--unselectedBorder: var(--spacing-xx-small) solid transparent;
 	--selectedBorder: var(--spacing-xx-small) solid var(--primaryColor);
 	position: fixed;
+	z-index: var(--z-200);
+
 	width: 100%;
 	bottom: 0;
 	background-color: var(--backgroundColor);
@@ -21,9 +23,37 @@
 
 	@include breakpoint($breakpoint-md) {
 		grid-area: nav;
-		position: static;
+		position: relative;
 		height: 100%;
-		align-self: center;
+		background: unset;
+		align-items: end;
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+	}
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 90%;
+		height: 624px;
+		background-image: url('/assets/images/nav/frame3.gif');
+		background-repeat: no-repeat;
+		background-size: 100%;
+		top: -42px;
+		left: var(--spacing-small);
+
+		@include breakpoint($breakpoint-md) {
+			width: 450px;
+			height: 642px;
+			top: unset;
+			left: unset;
+			background-image: url('/assets/images/nav/frame5.gif');
+			background-repeat: no-repeat;
+			bottom: var(--spacing-large);
+			left: var(--spacing-medium);
+		}
 	}
 }
 
@@ -31,13 +61,22 @@
 	max-width: 100%;
 	display: grid;
 	justify-content: center;
-	grid-template-columns: repeat(3, var(--menuSquare));
+	grid-template-columns: repeat(3, var(--menuSquare-sm));
 	grid-auto-rows: 1fr;
 	gap: var(--spacing-small);
+	position: relative;
+	z-index: var(--z-50);
 
 	@include breakpoint($breakpoint-md) {
-		grid-template-columns: repeat(1, var(--menuSquare));
-		margin-top: var(--spacing-xx-large);
+		width: min-content;
+		margin-top: var(--spacing-x-large);
+		margin-bottom: 16rem;
+		margin-right: 2rem;
+		justify-content: end;
+		grid-template-columns: repeat(3, 72px);
+
+		// just joshing around
+		transform: perspective(1000px) rotateY(22deg) rotateX(-12deg) rotateZ(-4deg);
 	}
 }
 
@@ -70,40 +109,34 @@
 .nav__text {
 	width: 100%;
 	text-align: center;
-	text-shadow: 2px 2px 0 var(--backgroundColor);
+	background-color: var(--backgroundColor);
 
 	@include breakpoint($breakpoint-md) {
-		text-align: left;
+		font-size: 10px;
+		font-weight: 700;
+		text-shadow: none;
 	}
 }
 
 .nav__item--active {
-	//border: var(--selectedBorder);
-	//color: var(--primaryColor);
-
 	&::after {
 		content: '';
 		display: block;
 		position: absolute;
 		border-radius: 50%;
 		background-color: var(--primaryColor);
-		top: 25%;
-		left: 25%;
-		bottom: 25%;
-		right: 30%;
-
-		@include breakpoint($breakpoint-md) {
-			left: 15%;
-			bottom: 30%;
-		}
+		bottom: var(--spacing-large);
+		width: 42px;
+		height: 42px;
 	}
 }
 
 .nav__toggle {
 	padding: var(--spacing-medium);
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	right: 0;
+	z-index: var(--z-999);
 }
 
 .nav__icon {

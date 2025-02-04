@@ -8,19 +8,18 @@ eleventyNavigation:
 ---
 
 <div class="container">
-	<h1>I really need a title</h1>
-	<p>
-		Hello! This website serves as a creative outlet and potpourri of various
-		media. It's nice to have a place where I can store projects and easily
-		access them again. <br />
-		Currently much of it is a work in progress, but feel free to browse around.
-		{# include rss feed #}
-	</p>
+	<section class="introduction mb-xxl">
+		<h1>Welcome to the shrimp base,</h1>
+		<p class="wrapper__md">
+			Hello! This website serves as a creative outlet and potpourri of various
+			media. It's nice to have a place where I can store projects and easily
+			access them again. <br />
+			Currently much of it is a work in progress, but feel free to browse
+			around. {# include rss feed #}
+		</p>
+	</section>
 
-	{# about the author, move later #}
-	<div class="introduction">tempu, 30, f, bla bla</div>
-
-	{# updates, move later #}
+	{% include "partials/about.njk" %} {# updates, move later #}
 	<ul class="changelog__list">
 		<li class="changelog__item">date, change</li>
 		<li class="changelog__item"></li>

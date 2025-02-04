@@ -1,0 +1,41 @@
+---
+layout: base
+title: imprint
+
+resources: [
+	{
+		item: Eleventy with Vite Template,
+		url: https://github.com/matthiasott/eleventy-plus-vite/issues
+	},
+	{
+		item: Octicon,
+		url: https://github.com/primer/octicons/
+	}
+]
+---
+
+<section class="imprint">
+	<h1>{{ title }}</h1>
+	<div class="copyright__container wrapper__md mb-lg">
+		Navigation icons and images published here are created by me and may not be
+		distributed unless explicitly otherwise stated. <br /><br />
+
+		<strong> Notice regarding German imprint law: </strong> <br />
+		Diese Webseite dient rein privater Natur und hat keinerlei kommerziellen
+		Nutzen und die Impressumspflicht entfällt somit.
+	</div>
+
+	<h2>Resources</h2>
+	<div class="resources__container">
+		<ol class="resources__list">
+			{%- for resource in resources -%}
+			<li class="resources__item">
+				<a href="{{ resource.url | url }}" class="resources__item__link">
+					{{ resource.item }}
+				</a>
+			</li>
+			{%- endfor -%}
+		</ol>
+	</div>
+</section>
+{# imprint, resources, links etc #}

@@ -1,12 +1,12 @@
 ul,
 ol {
+	list-style: none;
 	font-size: var(--fluid-0);
 	line-height: 1.5;
 }
 
 ul[class],
 ol[class] {
-	list-style: none;
 	padding-left: 0;
 }
 
@@ -20,4 +20,19 @@ li > {
 
 section.list {
 	margin: var(--spacing-xx-large) 0;
+}
+
+.list--sparkle {
+	li::before {
+		content: '';
+		display: inline-block;
+		width: var(--pixel-16);
+		height: var(--pixel-16);
+		background-image: url(/assets/icons/octicon--sparkle-fill-16.svg);
+		background-repeat: no-repeat;
+		filter: invert(
+			1
+		); // ensures bullet point can be seen on light and dark mode
+		padding-right: var(--spacing-xx-small);
+	}
 }

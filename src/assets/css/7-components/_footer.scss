@@ -1,20 +1,20 @@
-.site-footer {
-    &__container {
-        position: relative;
-        max-width: calc(var(--columnPaddingNormal)*2 + var(--layoutWidth));
-        margin: 0 auto;
-        padding: var(--columnPaddingNormal);
+@use '../3-tools/mixins' as *;
 
-        display: block;
+.site-footer__inner {
+	padding: var(--spacing-medium);
+	padding-left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
 
-        @media(min-width: 60em) {
-            padding: calc(2 * var(--columnPaddingNormal));
-        }
-    }
+	@include breakpoint($breakpoint-md) {
+		flex-direction: row;
+	}
+}
 
-    a {
-        font-weight: bold;
-        text-decoration: underline;
-        color: inherit;
-    }
+.site-footer__link {
+	color: var(--textColor);
+	font-weight: 700;
+	text-decoration: none;
 }

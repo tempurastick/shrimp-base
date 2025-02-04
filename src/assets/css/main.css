@@ -5,7 +5,11 @@
 :root {
   --square: 2rem;
   --halfSquare: 1rem;
-  --menuSquare: 54px;
+  --menuSquare: 112px;
+  --menuSquare-sm: 72px;
+  --menuSquare-xs: 48px;
+  --z-100: 100;
+  --z-999: 999;
 }
 
 :root {
@@ -25,7 +29,7 @@
     --backgroundColor: #151515;
     --textColor: #eeeeee;
     --primaryColor: #ed247b;
-    --squareColour: rgb(15, 12, 12);
+    --squareColour: #1b1b1b;
   }
 }
 /**
@@ -58,6 +62,14 @@
   src: url("/assets/fonts/Geist/Geist-Light.woff2") format("woff2");
   unicode-range: U+21-80, U+91-94, U+BF-D6, U+D8-F6, U+F8-122;
 }
+@font-face {
+  font-family: "Silkscreen";
+  font-stretch: 100%;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/assets/fonts/Silkscreen-Regular.woff2") format("woff2");
+}
 body {
   font-family: "Geist", sans-serif;
 }
@@ -70,6 +82,11 @@ body {
   --mq-medium: "screen and (min-width: 48em)";
   --mq-large: "only screen and (min-width: 64.0625em)";
   --mq-x-large: "screen and (min-width: 90em)";
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1900px;
 }
 
 /**
@@ -90,59 +107,19 @@ body {
 /**
  *  Typography design tokens: Font-sizes, line-height, etc. 
  */
-/**
- * Fluid type scale based on Utopia (https://utopia.fyi)
- */
 :root {
+  --fluid-screen: 100vw;
   --fluid-min-width: 320;
   --fluid-max-width: 1500;
   --fluid-min-size: 18;
   --fluid-max-size: 22;
   --fluid-min-ratio: 1.2;
   --fluid-max-ratio: 1.5;
-}
-
-:root {
-  --fluid-screen: 100vw;
-  --fluid-bp: calc((var(--fluid-screen) - ((var(--fluid-min-width) / 16) * 1rem)) / ((var(--fluid-max-width) / 16) - (var(--fluid-min-width) / 16)));
-}
-
-@media screen and (min-width: 1500px) {
-  :root {
-    --fluid-screen: calc(var(--fluid-max-width) * 1px);
-  }
-}
-:root {
-  --fluid-min-scale-0: var(--fluid-min-ratio);
-  --fluid-min-scale-1: var(--fluid-min-scale-0) * var(--fluid-min-ratio);
-  --fluid-min-scale-2: var(--fluid-min-scale-1) * var(--fluid-min-ratio);
-  --fluid-min-scale-3: var(--fluid-min-scale-2) * var(--fluid-min-ratio);
-  --fluid-min-scale-4: var(--fluid-min-scale-3) * var(--fluid-min-ratio);
-  --fluid-min-scale-5: var(--fluid-min-scale-4) * var(--fluid-min-ratio);
-  --fluid-max-scale-0: var(--fluid-max-ratio);
-  --fluid-max-scale-1: var(--fluid-max-scale-0) * var(--fluid-max-ratio);
-  --fluid-max-scale-2: var(--fluid-max-scale-1) * var(--fluid-max-ratio);
-  --fluid-max-scale-3: var(--fluid-max-scale-2) * var(--fluid-max-ratio);
-  --fluid-max-scale-4: var(--fluid-max-scale-3) * var(--fluid-max-ratio);
-  --fluid-max-scale-5: var(--fluid-max-scale-4) * var(--fluid-max-ratio);
-  --fluid-min-size-0: (var(--fluid-min-size)) / 16;
-  --fluid-min-size-1: (var(--fluid-min-size) * var(--fluid-min-scale-0)) / 16;
-  --fluid-min-size-2: (var(--fluid-min-size) * var(--fluid-min-scale-1)) / 16;
-  --fluid-min-size-3: (var(--fluid-min-size) * var(--fluid-min-scale-2)) / 16;
-  --fluid-min-size-4: (var(--fluid-min-size) * var(--fluid-min-scale-3)) / 16;
-  --fluid-min-size-5: (var(--fluid-min-size) * var(--fluid-min-scale-4)) / 16;
-  --fluid-max-size-0: (var(--fluid-max-size)) / 16;
-  --fluid-max-size-1: (var(--fluid-max-size) * var(--fluid-max-scale-0)) / 16;
-  --fluid-max-size-2: (var(--fluid-max-size) * var(--fluid-max-scale-1)) / 16;
-  --fluid-max-size-3: (var(--fluid-max-size) * var(--fluid-max-scale-2)) / 16;
-  --fluid-max-size-4: (var(--fluid-max-size) * var(--fluid-max-scale-3)) / 16;
-  --fluid-max-size-5: (var(--fluid-max-size) * var(--fluid-max-scale-4)) / 16;
-  --fluid-0: calc(((var(--fluid-min-size-0) * 1rem) + (var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)));
-  --fluid-1: calc(((var(--fluid-min-size-1) * 1rem) + (var(--fluid-max-size-1) - var(--fluid-min-size-1)) * var(--fluid-bp)));
-  --fluid-2: calc(((var(--fluid-min-size-2) * 1rem) + (var(--fluid-max-size-2) - var(--fluid-min-size-2)) * var(--fluid-bp)));
-  --fluid-3: calc(((var(--fluid-min-size-3) * 1rem) + (var(--fluid-max-size-3) - var(--fluid-min-size-3)) * var(--fluid-bp)));
-  --fluid-4: calc(((var(--fluid-min-size-4) * 1rem) + (var(--fluid-max-size-4) - var(--fluid-min-size-4)) * var(--fluid-bp)));
-  --fluid-5: calc(((var(--fluid-min-size-5) * 1rem) + (var(--fluid-max-size-5) - var(--fluid-min-size-5)) * var(--fluid-bp)));
+  --pixel-8: 8px;
+  --pixel-16: 16px;
+  --font-base: 1rem;
+  --h1: 2rem;
+  --h2: 1.5rem;
 }
 
 /* The aspect ratio hack – https://matthiasott.com/notes/aspect-ratio-in-css */
@@ -534,14 +511,10 @@ body {
   background-color: var(--backgroundColor);
   padding-right: var(--scrollbarComp);
   overflow-x: hidden;
-  background-image: linear-gradient(45deg, var(--squareColour) 26%, transparent 26%), linear-gradient(135deg, var(--squareColour) 26%, transparent 26%), linear-gradient(45deg, transparent 75%, var(--squareColour) 75%), linear-gradient(135deg, transparent 75%, var(--squareColour) 75%);
-  background-size: var(--square) var(--square);
-  /* Must be a square */
-  background-position: 0 0, var(--halfSquare) 0, var(--halfSquare) var(--halfSquare), 0px var(--halfSquare);
-  /* Must be half of one side of the square */
 }
 
-button, .button {
+button,
+.button {
   background-color: var(--textColor);
   color: white;
   display: inline-flex;
@@ -556,7 +529,8 @@ button, .button {
   white-space: nowrap;
   text-decoration: none;
 }
-button:hover, .button:hover {
+button:hover,
+.button:hover {
   background-color: rgba(26, 26, 26, 0.85);
 }
 
@@ -569,14 +543,15 @@ progress {
 }
 
 h1 {
-  font-size: var(--fluid-4);
+  font-size: var(--h1);
   margin-bottom: 0.5em;
+  letter-spacing: 1.2px;
 }
 
 h2 {
-  font-size: var(--fluid-3);
-  margin-top: 1em;
+  font-size: var(--h2);
   margin-bottom: 0.5em;
+  letter-spacing: 1.2px;
 }
 
 h3 {
@@ -599,15 +574,16 @@ a svg {
   fill: currentColor;
 }
 
-ul, ol {
+ul,
+ol {
+  list-style: none;
   font-size: var(--fluid-0);
   line-height: 1.5;
 }
 
 ul[class],
 ol[class] {
-  list-style: none;
-  padding: 0;
+  padding-left: 0;
 }
 
 li > ul,
@@ -620,8 +596,19 @@ section.list {
   margin: var(--spacing-xx-large) 0;
 }
 
+.list--sparkle li::before {
+  content: "";
+  display: inline-block;
+  width: var(--pixel-16);
+  height: var(--pixel-16);
+  background-image: url(/assets/icons/octicon--sparkle-fill-16.svg);
+  background-repeat: no-repeat;
+  filter: invert(1);
+  padding-right: var(--spacing-xx-small);
+}
+
 p {
-  font-size: var(--fluid-0);
+  font-size: var(--font-base);
   line-height: 1.5;
 }
 
@@ -631,34 +618,77 @@ span.marker {
   display: inline-block;
 }
 
+.toggle-animations {
+  position: absolute;
+  z-index: var(--z-999);
+  margin: var(--spacing-x-small);
+  background-color: unset;
+  border: unset;
+  border-radius: 0;
+}
+.toggle-animations:hover, .toggle-animations:focus, .toggle-animations:active {
+  background-color: unset;
+}
+@media all and (min-width: 1024px) {
+  .toggle-animations {
+    margin: var(--spacing-medium);
+  }
+}
+
+.toggle-animations__icon {
+  position: absolute;
+  left: 0;
+}
+
+@media all and (min-width: 1024px) {
+  .skeleton__grid {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 10% auto;
+    grid-template-rows: auto auto 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "nav header" "nav content" "nav footer";
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .site-header {
+    grid-area: header;
+  }
+}
+
+.main {
+  margin-left: var(--spacing-medium);
+  min-height: 87vh;
+}
+@media all and (min-width: 1024px) {
+  .main {
+    grid-area: content;
+  }
+}
+
+.site-footer {
+  margin-left: var(--spacing-medium);
+}
+@media all and (min-width: 1024px) {
+  .site-footer {
+    grid-area: footer;
+  }
+}
+
 body {
   overflow-x: hidden;
 }
 
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  min-height: 100vh;
-  position: relative;
+@media all and (min-width: 1024px) {
+  .wrapper__md {
+    max-width: 1024px;
+  }
 }
 
-.container {
-  width: 100%;
-  margin: 0 auto;
-  max-width: var(--container-max-width);
-  padding: 2rem 1rem;
-  padding: 2rem clamp(var(--spacing-medium), 3.75vw, var(--spacing-x-large));
-}
-
-.site-header__container {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  padding: clamp(var(--spacing-x-small), 4vw, var(--spacing-x-large)) clamp(var(--spacing-medium), 3.75vw, var(--spacing-x-large));
+.site-header__title {
+  margin-left: var(--spacing-medium);
 }
 
 .site-footer__container {
@@ -689,24 +719,150 @@ body {
 }
 
 .nav {
-  position: absolute;
   --unselectedBorder: var(--spacing-xx-small) solid transparent;
   --selectedBorder: var(--spacing-xx-small) solid var(--primaryColor);
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: var(--backgroundColor);
+  background-image: linear-gradient(45deg, var(--squareColour) 26%, transparent 26%), linear-gradient(135deg, var(--squareColour) 26%, transparent 26%), linear-gradient(45deg, transparent 75%, var(--squareColour) 75%), linear-gradient(135deg, transparent 75%, var(--squareColour) 75%);
+  background-size: var(--square) var(--square);
+  /* Must be a square */
+  background-position: 0 0, var(--halfSquare) 0, var(--halfSquare) var(--halfSquare), 0px var(--halfSquare);
+  /* Must be half of one side of the square */
+}
+@media all and (min-width: 1024px) {
+  .nav {
+    grid-area: nav;
+    position: static;
+    height: 100%;
+    align-self: center;
+  }
 }
 
 .nav__menu {
+  max-width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  grid-template-columns: repeat(3, var(--menuSquare));
   grid-auto-rows: 1fr;
+  gap: var(--spacing-small);
+}
+@media all and (min-width: 1024px) {
+  .nav__menu {
+    grid-template-columns: repeat(1, var(--menuSquare));
+    margin-top: var(--spacing-xx-large);
+  }
+}
+
+.nav__link {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: var(--pixel-16);
+  font-family: "Silkscreen" monospace;
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+  z-index: var(--z-100);
+}
+@media all and (min-width: 1024px) {
+  .nav__link {
+    align-items: start;
+  }
 }
 
 .nav__item {
-  aspect-ratio: 1/1;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
   border: var(--unselectedBorder);
+  position: relative;
 }
 
-.nav__item--active {
-  border: var(--selectedBorder);
+.nav__text {
+  width: 100%;
+  text-align: center;
+  text-shadow: 2px 2px 0 var(--backgroundColor);
+}
+@media all and (min-width: 1024px) {
+  .nav__text {
+    text-align: left;
+  }
+}
+
+.nav__item--active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--primaryColor);
+  top: 25%;
+  left: 25%;
+  bottom: 25%;
+  right: 30%;
+}
+@media all and (min-width: 1024px) {
+  .nav__item--active::after {
+    left: 15%;
+    bottom: 30%;
+  }
+}
+
+.nav__toggle {
+  padding: var(--spacing-medium);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.nav__icon {
+  max-height: var(--menuSquare-xs);
+}
+@media all and (min-width: 1024px) {
+  .nav__icon {
+    max-height: var(--menuSquare);
+    max-width: var(--menuSquare-sm);
+  }
+}
+
+.nav__toggle {
+  align-content: center;
+}
+
+.about__container {
+  display: flex;
+  gap: var(--spacing-medium);
+}
+
+.about__h2 {
+  margin-top: 0;
+  margin-left: var(--spacing-small);
+}
+
+.about__img {
+  border: 4px solid var(--textColor);
+  border-radius: var(--pixel-8);
+}
+
+.mobile-only {
+  display: block;
+}
+@media all and (min-width: 1024px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 /* -----------------------------------------------------------------------------
