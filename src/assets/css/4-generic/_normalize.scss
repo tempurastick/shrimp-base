@@ -64,12 +64,7 @@ code,
 kbd,
 samp,
 pre {
-	font-family:
-		ui-monospace,
-		SFMono-Regular,
-		Consolas,
-		'Liberation Mono',
-		Menlo,
+	font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
 		monospace; /* 1 */
 	font-size: 1em; /* 2 */
 }
@@ -248,4 +243,9 @@ Add the correct display in Chrome and Safari.
 
 summary {
 	display: list-item;
+}
+
+body {
+	margin: 0;
+	padding: 0;
 }

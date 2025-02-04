@@ -1,0 +1,120 @@
+@use '../3-tools/mixins' as *;
+
+.nav {
+	--unselectedBorder: var(--spacing-xx-small) solid transparent;
+	--selectedBorder: var(--spacing-xx-small) solid var(--primaryColor);
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	background-color: var(--backgroundColor);
+	background-image: linear-gradient(
+			45deg,
+			var(--squareColour) 26%,
+			transparent 26%
+		),
+		linear-gradient(135deg, var(--squareColour) 26%, transparent 26%),
+		linear-gradient(45deg, transparent 75%, var(--squareColour) 75%),
+		linear-gradient(135deg, transparent 75%, var(--squareColour) 75%);
+	background-size: var(--square) var(--square); /* Must be a square */
+	background-position: 0 0, var(--halfSquare) 0,
+		var(--halfSquare) var(--halfSquare), 0px var(--halfSquare); /* Must be half of one side of the square */
+
+	@include breakpoint($breakpoint-md) {
+		grid-area: nav;
+		position: static;
+		height: 100%;
+		align-self: center;
+	}
+}
+
+.nav__menu {
+	max-width: 100%;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(3, var(--menuSquare));
+	grid-auto-rows: 1fr;
+	gap: var(--spacing-small);
+
+	@include breakpoint($breakpoint-md) {
+		grid-template-columns: repeat(1, var(--menuSquare));
+		margin-top: var(--spacing-xx-large);
+	}
+}
+
+.nav__link {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	font-size: var(--pixel-16);
+	font-family: 'Silkscreen' monospace;
+	text-decoration: none;
+	color: var(--text-color);
+	position: relative;
+	z-index: var(--z-100);
+
+	@include breakpoint($breakpoint-md) {
+		align-items: start;
+	}
+}
+
+.nav__item {
+	height: 100%;
+	object-fit: contain;
+	border: var(--unselectedBorder);
+	position: relative;
+}
+
+.nav__text {
+	width: 100%;
+	text-align: center;
+	text-shadow: 2px 2px 0 var(--backgroundColor);
+
+	@include breakpoint($breakpoint-md) {
+		text-align: left;
+	}
+}
+
+.nav__item--active {
+	//border: var(--selectedBorder);
+	//color: var(--primaryColor);
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		border-radius: 50%;
+		background-color: var(--primaryColor);
+		top: 25%;
+		left: 25%;
+		bottom: 25%;
+		right: 30%;
+
+		@include breakpoint($breakpoint-md) {
+			left: 15%;
+			bottom: 30%;
+		}
+	}
+}
+
+.nav__toggle {
+	padding: var(--spacing-medium);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.nav__icon {
+	max-height: var(--menuSquare-xs);
+
+	@include breakpoint($breakpoint-md) {
+		max-height: var(--menuSquare);
+		max-width: var(--menuSquare-sm);
+	}
+}
+
+.nav__toggle {
+	align-content: center;
+}

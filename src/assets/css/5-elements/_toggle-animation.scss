@@ -1,0 +1,25 @@
+@use '../3-tools/mixins' as *;
+
+.toggle-animations {
+	position: absolute;
+	z-index: var(--z-999);
+	margin: var(--spacing-x-small);
+	background-color: unset;
+	border: unset;
+	border-radius: 0;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: unset;
+	}
+
+	@include breakpoint($breakpoint-md) {
+		margin: var(--spacing-medium);
+	}
+}
+
+.toggle-animations__icon {
+	position: absolute;
+	left: 0;
+}

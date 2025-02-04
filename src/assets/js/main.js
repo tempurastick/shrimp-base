@@ -4,4 +4,8 @@
 import 'focus-visible'
 
 // Internal Modules
-import './modules/nav'
+import { NavigationMenuPlugin } from './modules/nav'
+import { StaticIconToggle } from './modules/staticIcons'
+
+const navigationMenu = new NavigationMenuPlugin()
+const staticAnimation = new StaticIconToggle()

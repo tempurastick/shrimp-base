@@ -4,11 +4,10 @@ permalink: /posts/
 eleventyNavigation:
   key: Posts
   order: 2
+  icon: /public/assets/images/nav/blog_cropped.gif
 ---
 
 <div class="container">
-    <h1>Posts</h1>
-    {% set postslist = collections.posts %}
-    {% include "postslist.njk" %}
+	<h1>Posts</h1>
+	{% set postslist = collections.posts %} {% include "postslist.njk" %}
 </div>
-

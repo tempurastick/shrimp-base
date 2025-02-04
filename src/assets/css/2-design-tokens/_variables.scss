@@ -1,0 +1,65 @@
+// breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1900px;
+
+// borders
+@mixin border($size, $colour) {
+	border: $size solid $colour;
+}
+
+// spacing
+// 4pt system
+$s-8: 0.5rem;
+$s-12: 0.75rem;
+$s-16: 1rem;
+$s-20: 1.25rem;
+$s-24: 1.5rem;
+$s-28: 1.75rem;
+$s-32: 2rem;
+$s-36: 2.25rem;
+$s-40: 2.5rem;
+$s-44: 2.75rem;
+$s-48: 3rem;
+$s-56: 3.5rem;
+$s-64: 4rem;
+
+$spacing: (
+	8: $s-8,
+	12: $s-12,
+	16: $s-16,
+	20: $s-20,
+	24: $s-24,
+	28: $s-28,
+	32: $s-32,
+	36: $s-36,
+	40: $s-40,
+	44: $s-44,
+	48: $s-48,
+	56: $s-56,
+	64: $s-64
+);
+
+@mixin space-xy($property, $spacex, $spacey) {
+	#{$property}: $spacex $spacey;
+}
+
+// typography
+
+// font-weight
+$fw-light: 300;
+$fw-regular: 400;
+$fw-bold: 700;
+$fw-black: 900;
+
+// z-index
+$z-minus: -1;
+$z-1: 1;
+$z-2: 2;
+$z-5: 5;
+$z-9: 9;
+$z-10: 10;
+$z-20: 20;
+$z-30: 30;

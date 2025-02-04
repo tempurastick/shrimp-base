@@ -1,0 +1,9 @@
+@use '../3-tools/mixins' as *;
+
+.mobile-only {
+	display: block;
+
+	@include breakpoint($breakpoint-md) {
+		display: none;
+	}
+}

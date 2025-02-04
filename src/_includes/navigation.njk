@@ -1,16 +1,41 @@
 <nav class="nav nav--primary" role="navigation" tabindex="-1">
-    {# Nav Links  #}
-    <ul class="nav__menu">
-        {%- for item in collections.all | eleventyNavigation -%}
-            {%- if item.url -%}
-                {%- set isCurrent = (item.url == page.url) -%}
-                {%- set isParent = item.url != '/' and item.url in page.url -%}
-                <li class="nav__item{% if isCurrent or isParent %} nav__item--active{% endif %}">
-                    <a class="nav__link" href="{% if isCurrent %}#main{% else %}{{ item.url | url }}{% endif %}" {% if isCurrent %} aria-current="page" {% endif %}>
-                        {{ item.title }}
-                    </a>
-                </li>
-            {%- endif -%}
-        {%- endfor -%}
-    </ul>
+	{# Nav Links #}
+	<ul class="nav__menu" data-nav-toggle="container">
+		{%- for item in collections.all | eleventyNavigation -%} {%- if item.url -%}
+		{%- set isCurrent = (item.url == page.url) -%} {%- set isParent = item.url
+		!= '/' and item.url in page.url -%}
+		<li
+			class="nav__item{% if isCurrent or isParent %} nav__item--active{% endif %}"
+		>
+			<a
+				class="nav__link"
+				href="{% if isCurrent %}#main{% else %}{{ item.url | url }}{% endif %}"
+				{%
+				if
+				isCurrent
+				%}
+				aria-current="page"
+				{%
+				endif
+				%}
+			>
+				<img src="{{ item.icon }}" class="nav__icon freezeframe" />
+				<span class="nav__text">
+					{{ item.title }}
+				</span>
+			</a>
+		</li>
+		{%- endif -%} {%- endfor -%}
+	</ul>
+	<div
+		class="nav__toggle mobile-only"
+		data-nav-toggle="selector"
+		aria-label="menu toggle"
+	>
+		<img
+			class="nav__toggle__icon"
+			src="/public/assets/images/nav/menu.gif"
+			alt="Menu Icon"
+		/>
+	</div>
 </nav>
